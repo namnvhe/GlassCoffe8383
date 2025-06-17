@@ -1,0 +1,98 @@
+﻿@model Cafe.BusinessObjects.Models.Response.UserProfileResponse
+@{
+    ViewData["Title"] = @Model.FullName;
+}
+
+<div class="container-xxl">
+    <div class="row">
+        <!-- Profile Card -->
+        <div class="col-xl-9 col-lg-8">
+            <div class="card overflow-hidden">
+                <div class="card-body">
+                    <div class="bg-primary profile-bg rounded-top position-relative mx-n3 mt-n3">
+                        <img src="~/broken-user.jpg" alt="@Model.FullName" class="avatar-xl border border-light border-3 rounded-circle position-absolute top-100 start-0 translate-middle ms-5"
+                             data-bs-toggle="modal"
+                             data-bs-target="#profileImageModal"
+                             style="cursor: pointer;">
+                    </div>
+                    <div class="mt-5 d-flex flex-wrap align-items-center justify-content-between">
+                        <div>
+                            <h4 class="mb-1">@Model.FullName <i class='bx bxs-badge-check text-success align-middle' @(Model.IsEmailVerified ? "" : "style=display:none")></i></h4>
+                            <p class="mb-0">@Model.Role</p>
+                        </div>
+                        <div class="d-flex align-items-center gap-2 my-2 my-lg-0">
+                            <a href="#!" class="btn btn-info"><i class='bx bx-message-dots'></i> Message</a>
+                            <a asp-area="Admin" asp-action="UpdateProfile" asp-controller="Account" class="btn btn-outline-primary"><i class="bx bx-plus"></i> Change Profile</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Personal Information Card -->
+        <div class="col-xl-3 col-lg-4">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Personal Information</h4>
+                </div>
+                <div class="card-body">
+                    <div class="">
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="avatar-sm bg-light d-flex align-items-center justify-content-center rounded">
+                                <iconify-icon icon="solar:letter-bold-duotone" class="fs-20 text-secondary"></iconify-icon>
+                            </div>
+                            <p class="mb-0 fs-14">Email <a href="mailto:@Model.Email" class="text-primary fw-semibold">@Model.Email</a></p>
+                        </div>
+                        @if (!string.IsNullOrEmpty(Model.Phone))
+                        {
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <div class="avatar-sm bg-light d-flex align-items-center justify-content-center rounded">
+                                    <iconify-icon icon="solar:phone-bold-duotone" class="fs-20 text-secondary"></iconify-icon>
+                                </div>
+                                <p class="mb-0 fs-14">Phone <span class="text-dark fw-semibold">@Model.Phone</span></p>
+                            </div>
+                        }
+                        <div class="d-flex align-items-center gap-2 mb-2">
+                            <div class="avatar-sm bg-light d-flex align-items-center justify-content-center rounded">
+                                <iconify-icon icon="solar:calendar-bold-duotone" class="fs-20 text-secondary"></iconify-icon>
+                            </div>
+                            <p class="mb-0 fs-14">Created <span class="text-dark fw-semibold">@Model.CreatedAt.ToString("MMM dd, yyyy")</span></p>
+                        </div>
+                        @if (Model.LastLoginAt.HasValue)
+                        {
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <div class="avatar-sm bg-light d-flex align-items-center justify-content-center rounded">
+                                    <iconify-icon icon="solar:login-bold-duotone" class="fs-20 text-secondary"></iconify-icon>
+                                </div>
+                                <p class="mb-0 fs-14">Last Login <span class="text-dark fw-semibold">@Model.LastLoginAt.Value.ToString("MMM dd, yyyy HH:mm")</span></p>
+                            </div>
+                        }
+                        <div class="d-flex align-items-center gap-2">
+                            <div class="avatar-sm bg-light d-flex align-items-center justify-content-center rounded">
+                                <iconify-icon icon="solar:check-circle-bold-duotone" class="fs-20 text-secondary"></iconify-icon>
+                            </div>
+                            <p class="mb-0 fs-14">Email Verified <span class="badge @(Model.IsEmailVerified ? "bg-success-subtle text-success" : "bg-warning-subtle text-warning") ms-1">@(Model.IsEmailVerified ? "Verified" : "Not Verified")</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Profile Image Modal -->
+<div class="modal fade" id="profileImageModal" tabindex="-1" aria-labelledby="profileImageModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title" id="profileImageModalLabel">#@Model.UserId</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body text-center">
+                <img src="~/broken-user.jpg"
+                     alt="@Model.FullName"
+                     class="img-fluid rounded"
+                     style="max-height: 70vh;">
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "Cafe.ManagementAPI\\Cafe.ManagementAPI.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "Cafe.Fontend\\Cafe.Fontend.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]

@@ -1,0 +1,43 @@
+﻿@using Cafe.BusinessObjects.Models.Response
+@model IEnumerable<PopularMenuItemResponse>
+
+<div class="more-products">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 offset-lg-2 text-center">
+                <div class="section-title">
+                    <h3><span class="orange-text">Đồ uống</span> phổ biến</h3>
+                    <p>Thưởng thức những món đồ uống được yêu thích nhất – hương vị đậm đà, khó quên.</p>
+                </div>
+            </div>
+        </div>
+        @if (Model != null && Model.Any())
+        {
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-lg-4 col-md-6 text-center">
+                        <div class="single-product-item">
+                            <div class="product-image">
+                                <a asp-action="Details" asp-controller="MenuItem" asp-route-id="@item.MenuItemId">
+                                    <img src="@(!string.IsNullOrEmpty(item.MenuItemImage) ? item.MenuItemImage : "~/broken-img.png")" alt="@item.Name" class="img-fluid">
+                                </a>
+                            </div>
+                            <h3>@item.Name</h3>
+                            <p class="product-price"><span>@item.DrinkTypeName</span> @item.Price.ToString("N0") VNĐ </p>
+                            <a href="#" class="cart-btn"><i class="fas fa-shopping-cart"></i> Add to Cart</a>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        else
+        {
+            <div class="container">
+                <div class="text-center">
+                    <p class="text-muted">Chưa có món đồ uống phổ biến nào.</p>
+                </div>
+            </div>
+        }
+    </div>
+</div>
