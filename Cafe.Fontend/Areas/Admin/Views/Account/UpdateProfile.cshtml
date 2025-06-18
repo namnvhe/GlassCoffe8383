@@ -1,0 +1,206 @@
+﻿@model Cafe.BusinessObjects.Models.Request.UpdateProfileRequest
+
+@{
+    ViewData["Title"] = "Cập nhật hồ sơ";
+    var currentPhotoPath = ViewBag.CurrentPhotoPath ?? Model.Photo;
+    var jwtToken = ViewContext.HttpContext.Session.GetString("JWTToken") ?? "";
+}
+
+<div class="container-xxl">
+    <div class="row">
+        <!-- Profile Photo Section -->
+        <div class="col-xl-3 col-md-6">
+            <div class="card">
+                <div class="card-body">
+                    <div class="position-relative bg-light p-2 rounded text-center">
+                        @if (!string.IsNullOrEmpty(currentPhotoPath))
+                        {
+                            <img src="@currentPhotoPath" alt="@Model.FullName" class="avatar-xxl">
+                        }
+                        else
+                        {
+                            <img src="~/broken-user.jpg" alt="Default Profile Photo" class="avatar-xxl">
+                        }
+                        <div class="position-absolute top-0 end-0 m-1">
+                            <div class="dropdown">
+                                <a href="#" class="dropdown-toggle arrow-none card-drop" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <iconify-icon icon="iconamoon:menu-kebab-vertical-circle-duotone" class="fs-20 align-middle text-muted"></iconify-icon>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end">
+                                    <a href="javascript:void(0);" class="dropdown-item" id="removePhoto">Xóa ảnh</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-wrap justify-content-between my-3">
+                        <div>
+                            <h4 class="mb-1">@Model.FullName</h4>
+                            <div>
+                                <a href="#!" class="link-primary fs-16 fw-medium">@ViewBag.UserEmail</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <p class="d-flex align-items-center gap-2 mb-1"><iconify-icon icon="solar:outgoing-call-rounded-bold-duotone" class="fs-20 text-primary"></iconify-icon>@Model.Phone</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Profile Update Form Section -->
+        <div class="col-xl-9 col-lg-8">
+            <!-- Photo Upload Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Cập nhật ảnh đại diện</h4>
+                </div>
+                <div class="card-body">
+                    <form action="@Url.Action("UpdateProfile", "Account", new { area = "Admin" })" method="post" class="dropzone" id="myAwesomeDropzone" data-plugin="dropzone" data-previews-container="#file-previews" data-upload-preview-template="#uploadPreviewTemplate" enctype="multipart/form-data">
+                        <div class="fallback">
+                            <input name="Photo" type="file" accept=".jpg,.jpeg,.png" />
+                        </div>
+                        <div class="dz-message needsclick">
+                            <i class="bx bx-cloud-upload fs-48 text-primary"></i>
+                            <h3 class="mt-4">Kéo thả ảnh tại đây, hoặc <span class="text-primary">nhấn để chọn</span></h3>
+                            <span class="text-muted fs-13">Khuyến nghị 1600 x 1200 (4:3). Chấp nhận file PNG, JPG và GIF</span>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Profile Information Section -->
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Thông tin cá nhân</h4>
+                </div>
+                <div class="card-body">
+                    @if (ViewBag.SuccessMessage != null)
+                    {
+                        <div class="alert alert-success" role="alert">
+                            @ViewBag.SuccessMessage
+                        </div>
+                    }
+                    @if (ViewBag.ErrorMessage != null)
+                    {
+                        <div class="alert alert-danger" role="alert">
+                            @ViewBag.ErrorMessage
+                        </div>
+                    }
+                    <form asp-action="UpdateProfile" asp-controller="Account" asp-area="Admin" method="post" enctype="multipart/form-data">
+                        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="FullName" class="form-label">Họ tên</label>
+                                    <input asp-for="FullName" class="form-control" placeholder="Nhập họ tên" />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <label asp-for="Phone" class="form-label">Số điện thoại</label>
+                                    <div class="input-group">
+                                        <span class="input-group-text fs-20"><iconify-icon icon="solar:outgoing-call-rounded-bold-duotone" class="fs-20"></iconify-icon></span>
+                                        <input asp-for="Phone" class="form-control" placeholder="Nhập số điện thoại" />
+                                    </div>
+                                    <span asp-validation-for="Phone" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="p-3 bg-light mb-3 rounded">
+                            <div class="row justify-content-end g-2">
+                                <div class="col-lg-2">
+                                    <button type="submit" class="btn btn-primary w-100">Lưu thay đổi</button>
+                                </div>
+                                <div class="col-lg-2">
+                                    <a asp-action="MyProfile" asp-controller="Account" asp-area="Admin" class="btn btn-outline-secondary w-100">Hủy</a>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Dropzone Preview Template -->
+<div class="d-none">
+    <div id="uploadPreviewTemplate">
+        <div class="dz-preview dz-file-preview">
+            <div class="dz-image"><img data-dz-thumbnail /></div>
+            <div class="dz-details">
+                <div class="dz-filename"><span data-dz-name></span></div>
+                <div class="dz-size" data-dz-size></div>
+            </div>
+            <div class="dz-progress"><span class="dz-upload" data-dz-uploadprogress></span></div>
+            <div class="dz-error-message"><span data-dz-errormessage></span></div>
+            <div class="dz-success-mark"><i class="bx bx-check-circle"></i></div>
+            <div class="dz-error-mark"><i class="bx bx-x-circle"></i></div>
+            <a class="dz-remove" href="javascript:undefined;" data-dz-remove>Remove file</a>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script src="https://unpkg.com/dropzone@5/dist/min/dropzone.min.js"></script>
+    <script>
+        // Store JWT token in JavaScript variable
+        var jwtToken = '@jwtToken';
+
+        // Configure Dropzone
+        Dropzone.options.myAwesomeDropzone = {
+            paramName: "Photo",
+            maxFiles: 1,
+            acceptedFiles: ".jpg,.jpeg,.png",
+            autoProcessQueue: false, // Prevent auto-upload
+            previewsContainer: "#file-previews",
+            previewTemplate: document.querySelector("#uploadPreviewTemplate").innerHTML,
+            init: function () {
+                var myDropzone = this;
+                // Submit files when form is submitted
+                document.querySelector("form[asp-action='UpdateProfile']").addEventListener("submit", function (e) {
+                    if (myDropzone.getQueuedFiles().length > 0) {
+                        myDropzone.processQueue();
+                    } else {
+                        myDropzone.uploadFiles([]);
+                    }
+                });
+                // Handle file removal
+                this.on("removedfile", function (file) {
+                    // Optionally handle file removal logic
+                });
+            }
+        };
+
+        // Handle photo removal from dropdown
+        document.getElementById("removePhoto").addEventListener("click", function () {
+            if (!jwtToken) {
+                alert("Vui lòng đăng nhập lại!");
+                window.location.href = '@Url.Action("Login", "Auth", new { area = "Admin" })';
+                return;
+            }
+
+            // Send API request to clear PhotoPath
+            fetch('@Url.Action("UpdateProfile", "Account", new { area = "Admin" })', {
+                method: "PUT",
+                headers: {
+                    "Authorization": "Bearer " + jwtToken,
+                    "Content-Type": "multipart/form-data"
+                },
+                body: new FormData(document.querySelector("form[asp-action='UpdateProfile']"))
+            }).then(response => {
+                if (response.ok) {
+                    window.location.reload();
+                } else {
+                    alert("Xóa ảnh thất bại!");
+                }
+            }).catch(error => {
+                alert("Có lỗi xảy ra: " + error.message);
+            });
+        });
+    </script>
+}

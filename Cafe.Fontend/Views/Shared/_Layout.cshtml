@@ -1,0 +1,312 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Cafe Shop</title>
+    <!-- google font -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:400,700&display=swap" rel="stylesheet">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="~/asset/css/all.min.css">
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="~/asset/bootstrap/css/bootstrap.min.css">
+    <!-- owl carousel -->
+    <link rel="stylesheet" href="~/asset/css/owl.carousel.css">
+    <!-- magnific popup -->
+    <link rel="stylesheet" href="~/asset/css/magnific-popup.css">
+    <!-- animate css -->
+    <link rel="stylesheet" href="~/asset/css/animate.css">
+    <!-- mean menu css -->
+    <link rel="stylesheet" href="~/asset/css/meanmenu.min.css">
+    <!-- main style -->
+    <link rel="stylesheet" href="~/asset/css/main.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="~/asset/css/responsive.css">
+</head>
+<body>
+    <!--PreLoader-->
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="circle"></div>
+        </div>
+    </div>
+    <!--PreLoader Ends-->
+    <!-- header -->
+    <div class="top-header-area" id="sticker">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 col-sm-12 text-center">
+                    <div class="main-menu-wrap d-flex align-items-center justify-content-between">
+                        <!-- logo -->
+                        <div class="site-logo">
+                            <a asp-action="Index" asp-controller="Home">
+                                <img src="~/asset/img/logo.png">
+                            </a>
+                        </div>
+                        <!-- logo -->
+                        <!-- menu start -->
+                        <nav class="main-menu">
+                            <ul>
+                                <li class="current-list-item">
+                                    <a asp-action="Index" asp-controller="Home">Trang Chủ</a>
+                                </li>
+                                <li><a asp-action="Index" asp-controller="About">Chúng Tôi</a></li>
+                                <li>
+                                    <a href="#">Pages</a>
+                                    <ul class="sub-menu">
+                                        <li><a href="404.html">404 page</a></li>
+                                        <li><a href="cart.html">Giỏ Hàng</a></li>
+                                        <li><a href="checkout.html">Check Out</a></li>
+                                    </ul>
+                                </li>
+                                <li><a asp-action="Index" asp-controller="Contact">Liên Hệ</a></li>
+                                <li>
+                                    <a asp-action="Index" asp-controller="MenuItem">Menu</a>
+                                </li>
+                                @if (string.IsNullOrEmpty(Context.Session.GetString("JWTToken")))
+                                {
+                                    <li>
+                                        <a href="#">Tài Khoản</a>
+                                        <ul class="sub-menu">
+                                            <li><a asp-action="Login" asp-controller="Auth">Đăng Nhập</a></li>
+                                            <li><a asp-action="Register" asp-controller="Auth">Đăng Ký</a></li>
+                                        </ul>
+                                    </li>
+                                }
+                                else
+                                {
+                                    var userName = Context.Session.GetString("UserName");
+                                    var userPhoto = Context.Session.GetString("UserPhoto");
+                                    <li>
+                                        <a href="#">
+                                            <img src="@(string.IsNullOrEmpty(userPhoto) ? Url.Content("~/broken-user.jpg") : userPhoto)" alt="@userName" class="rounded-circle me-2" width="30" height="30">
+                                            <span>@userName</span>
+                                        </a>
+                                        <ul class="sub-menu">
+                                            <li><a asp-action="MyProfile" asp-controller="Account"><i class="fas fa-user me-2"></i> Hồ sơ của tôi</a></li>
+                                            <li><a asp-action="MyOrder" asp-controller="Account"><i class="fas fa-shopping-bag me-2"></i> Đơn hàng của tôi</a></li>
+                                            <li><a asp-action="MyCart" asp-controller="Account"><i class="fas fa-shopping-cart me-2"></i> Giỏ hàng của tôi</a></li>
+                                            <li class="logout-btn">
+                                                <a href="javascript:void(0);" data-logout-url="@Url.Action("Logout", "Auth")">
+                                                    <i class="fas fa-sign-out-alt me-2"></i> Đăng xuất
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                }
+                                <li>
+                                    <div class="header-icons">
+                                        <a class="shopping-cart" href="cart.html"><i class="fas fa-shopping-cart"></i></a>
+                                        <a class="mobile-hide search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                                    </div>
+                                </li>
+                            </ul>
+                        </nav>
+                        <a class="mobile-show search-bar-icon" href="#"><i class="fas fa-search"></i></a>
+                        <div class="mobile-menu"></div>
+                        <!-- menu end -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end header -->
+    <!-- search area -->
+    <div class="search-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <span class="close-btn"><i class="fas fa-window-close"></i></span>
+                    <div class="search-bar">
+                        <div class="search-bar-tablecell">
+                            <h3>Search For:</h3>
+                            <input type="text" placeholder="Keywords">
+                            <button type="submit">Search <i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end search area -->
+    @RenderBody()
+
+    @await Component.InvokeAsync("DrinkType")
+
+    <!-- footer -->
+    <div class="footer-area">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box about-widget">
+                        <h2 class="widget-title">Về Chúng Tôi</h2>
+                        <p>Khám phá thế giới cà phê cùng chúng tôi! Chúng tôi tự hào mang đến những hạt cà phê chọn lọc, được rang xay tỉ mỉ để tạo nên hương vị tuyệt hảo nhất. Mỗi sản phẩm là một trải nghiệm đáng giá.</p>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box get-in-touch">
+                        <h2 class="widget-title">Liên Hệ Mua Hàng</h2>
+                        <ul>
+                            <li>Hà Nội</li>
+                            <li>support@coffeeshop.com</li>
+                            <li>+84 123 456 789 (Hỗ trợ 24/7)</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box pages">
+                        <h2 class="widget-title">Danh Mục</h2>
+                        <ul>
+                            <li><a asp-action="Index" asp-controller="Home">Trang Chủ</a></li>
+                            <li><a asp-action="Index" asp-controller="About">Câu Chuyện Của Chúng Tôi</a></li>
+                            <li><a asp-action="Index" asp-controller="MenuItem">Sản Phẩm</a></li>
+                            <li><a asp-action="Index" asp-controller="Contact">Hỗ Trợ Khách Hàng</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6">
+                    <div class="footer-box subscribe">
+                        <h2 class="widget-title">Subscribe</h2>
+                        <p>Đừng bỏ lỡ! Đăng ký email để nhận ngay các chương trình khuyến mãi, sản phẩm mới và ưu đãi chỉ dành riêng cho bạn.</p>
+                        <form id="subscribeForm">
+                            <input type="email" name="email" id="emailInput" placeholder="Email của bạn" required>
+                            <button type="submit"><i class="fas fa-paper-plane"></i></button>
+                        </form>
+                        <div id="formMessage" style="margin-top: 10px; font-size: 0.9em;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- end footer -->
+    <!-- jquery -->
+    <script src="~/asset/js/jquery-1.11.3.min.js"></script>
+    <!-- bootstrap -->
+    <script src="~/asset/bootstrap/js/bootstrap.min.js"></script>
+    <!-- count down -->
+    <script src="~/asset/js/jquery.countdown.js"></script>
+    <!-- isotope -->
+    <script src="~/asset/js/jquery.isotope-3.0.6.min.js"></script>
+    <!-- waypoints -->
+    <script src="~/asset/js/waypoints.js"></script>
+    <!-- owl carousel -->
+    <script src="~/asset/js/owl.carousel.min.js"></script>
+    <!-- magnific popup -->
+    <script src="~/asset/js/jquery.magnific-popup.min.js"></script>
+    <!-- mean menu -->
+    <script src="~/asset/js/jquery.meanmenu.min.js"></script>
+    <!-- sticker js -->
+    <script src="~/asset/js/sticker.js"></script>
+    <!-- form validation js -->
+    <script src="~/asset/js/form-validate.js"></script>
+    <!-- main js -->
+    <script src="~/asset/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.22.0/dist/sweetalert2.all.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+@*     <style>
+        html.swal2-shown,
+        body.swal2-shown {
+            overflow-y: auto !important;
+        }
+
+        .swal2-container {
+            padding-top: 0 !important;
+        }
+    </style> *@
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const logoutBtn = document.querySelector('.logout-btn a');
+
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+
+                    const logoutUrl = this.getAttribute('data-logout-url');
+
+                    Swal.fire({
+                        title: 'Xác nhận đăng xuất',
+                        text: "Bạn có chắc chắn muốn đăng xuất?",
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#e74c3c',
+                        cancelButtonColor: '#95a5a6',
+                        confirmButtonText: 'Đăng xuất',
+                        cancelButtonText: 'Hủy',
+                        allowOutsideClick: false,
+                        allowEscapeKey: false,
+                        scrollbarPadding: false,
+                        heightAuto: false,
+                        backdrop: true
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            Swal.fire({
+                                title: 'Đã đăng xuất!',
+                                text: 'Bạn đã đăng xuất thành công.',
+                                icon: 'success',
+                                timer: 1500,
+                                showConfirmButton: false,
+                                scrollbarPadding: false,
+                                heightAuto: false,
+                                allowOutsideClick: false,
+                                allowEscapeKey: false,
+                                backdrop: true,
+                                position: 'center'
+                            }).then(() => {
+                                window.location.href = logoutUrl;
+                            });
+                        }
+                    });
+                });
+            }
+        });
+    </script>
+    <script>
+        // Lấy tham chiếu đến form và các phần tử khác
+        const subscribeForm = document.getElementById('subscribeForm');
+        const emailInput = document.getElementById('emailInput');
+        const formMessage = document.getElementById('formMessage');
+
+        // Google Apps Script Web App
+        const webAppUrl = 'https://script.google.com/macros/s/AKfycbwH6H84WApxr4sI8YRKtH6ggkPiqam-bp3Uponc-S-D4VNPrma1oAhA-kKAd4RmjJGz/exec';
+
+        // Xử lý sự kiện gửi form
+        subscribeForm.addEventListener('submit', function(e) {
+            e.preventDefault(); // Ngăn chặn hành vi gửi form mặc định (chuyển hướng trang)
+
+            formMessage.textContent = 'Đang gửi...'; // Hiển thị thông báo đang xử lý
+            formMessage.style.color = '#555';
+
+            const email = emailInput.value;
+            const formData = new FormData();
+            formData.append('email', email); // Đặt tên 'email' trùng với e.parameter.email trong Apps Script
+
+            fetch(webAppUrl, {
+                method: 'POST',
+                body: formData // Gửi dữ liệu form
+            })
+            .then(response => response.text()) // Đọc phản hồi dưới dạng văn bản
+            .then(data => {
+                if (data === 'Success') {
+                    formMessage.textContent = 'Đăng ký thành công! Cảm ơn bạn.';
+                    formMessage.style.color = 'green';
+                    emailInput.value = ''; // Xóa nội dung input sau khi gửi thành công
+                    setTimeout(() => {
+                        formMessage.textContent = ''; // Xóa nội dung thông báo
+                        formMessage.style.color = 'initial'; // Đặt lại màu về mặc định
+                    }, 5000); // 5 giây
+                } else {
+                    formMessage.textContent = 'Đăng ký thất bại. Vui lòng thử lại. Lỗi: ' + data;
+                    formMessage.style.color = 'red';
+                }
+            })
+            .catch(error => {
+                console.error('Lỗi khi gửi form:', error);
+                formMessage.textContent = 'Đã xảy ra lỗi. Vui lòng thử lại sau.';
+                formMessage.style.color = 'red';
+            });
+        });
+    </script>
+</body>
+</html>
