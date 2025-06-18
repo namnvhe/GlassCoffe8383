@@ -1,12 +1,41 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\vunuo\\Desktop\\Project\\PRN232-Project\\",
-  "Documents": [],
+  "WorkspaceRootPath": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{87816147-8CAF-428C-983D-FC52068C421D}|Cafe.ManagementAPI\\Cafe.ManagementAPI.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\glasscoffe8383\\cafe.managementapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{87816147-8CAF-428C-983D-FC52068C421D}|Cafe.ManagementAPI\\Cafe.ManagementAPI.csproj|solutionrelative:cafe.managementapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 168,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\Cafe.ManagementAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "Cafe.ManagementAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\Cafe.ManagementAPI\\appsettings.json",
+              "RelativeToolTip": "Cafe.ManagementAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-06-18T07:49:58.915Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

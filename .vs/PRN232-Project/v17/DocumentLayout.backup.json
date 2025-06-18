@@ -1,54 +1,12 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Users\\vunuo\\Desktop\\Project\\PRN232-Project\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{CCCD11AB-659A-442C-AB78-3045E04FBDDC}|Cafe.Fontend\\Cafe.Fontend.csproj|c:\\users\\vunuo\\desktop\\project\\prn232-project\\cafe.fontend\\views\\forgotpassword\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CCCD11AB-659A-442C-AB78-3045E04FBDDC}|Cafe.Fontend\\Cafe.Fontend.csproj|solutionrelative:cafe.fontend\\views\\forgotpassword\\resetpassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CCCD11AB-659A-442C-AB78-3045E04FBDDC}|Cafe.Fontend\\Cafe.Fontend.csproj|c:\\users\\vunuo\\desktop\\project\\prn232-project\\cafe.fontend\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CCCD11AB-659A-442C-AB78-3045E04FBDDC}|Cafe.Fontend\\Cafe.Fontend.csproj|solutionrelative:cafe.fontend\\controllers\\forgotpasswordcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 168,
-      "DocumentGroups": [
-        {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ForgotPasswordController.cs",
-              "DocumentMoniker": "C:\\Users\\vunuo\\Desktop\\Project\\PRN232-Project\\Cafe.Fontend\\Controllers\\ForgotPasswordController.cs",
-              "RelativeDocumentMoniker": "Cafe.Fontend\\Controllers\\ForgotPasswordController.cs",
-              "ToolTip": "C:\\Users\\vunuo\\Desktop\\Project\\PRN232-Project\\Cafe.Fontend\\Controllers\\ForgotPasswordController.cs",
-              "RelativeToolTip": "Cafe.Fontend\\Controllers\\ForgotPasswordController.cs",
-              "ViewState": "AgIAAHgBAAAAAAAAAAAAAJYBAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-17T07:08:30.04Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ResetPassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\vunuo\\Desktop\\Project\\PRN232-Project\\Cafe.Fontend\\Views\\ForgotPassword\\ResetPassword.cshtml",
-              "RelativeDocumentMoniker": "Cafe.Fontend\\Views\\ForgotPassword\\ResetPassword.cshtml",
-              "ToolTip": "C:\\Users\\vunuo\\Desktop\\Project\\PRN232-Project\\Cafe.Fontend\\Views\\ForgotPassword\\ResetPassword.cshtml",
-              "RelativeToolTip": "Cafe.Fontend\\Views\\ForgotPassword\\ResetPassword.cshtml",
-              "ViewState": "AgIAAOEBAAAAAAAAAAAQwA8CAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-17T07:08:28.526Z",
-              "EditorCaption": ""
-            }
-          ]
-        }
-      ]
+      "DocumentGroups": []
     }
   ]
 }
