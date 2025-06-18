@@ -3,12 +3,17 @@
   "WorkspaceRootPath": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\",
   "Documents": [
     {
+
       "AbsoluteMoniker": "D:0:0:{C32AA73B-BBFD-4684-BA72-0B23D1B1DAF6}|Cafe.BusinessObjects\\Cafe.BusinessObjects.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\glasscoffe8383\\cafe.businessobjects\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{C32AA73B-BBFD-4684-BA72-0B23D1B1DAF6}|Cafe.BusinessObjects\\Cafe.BusinessObjects.csproj|solutionrelative:cafe.businessobjects\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{48F7D7A7-2C9C-4F0A-8AA6-9FFFB28CB50D}|Cafe.DataAccess\\Cafe.DataAccess.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\glasscoffe8383\\cafe.dataaccess\\cafe.dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{48F7D7A7-2C9C-4F0A-8AA6-9FFFB28CB50D}|Cafe.DataAccess\\Cafe.DataAccess.csproj|solutionrelative:cafe.dataaccess\\cafe.dataaccess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+=======
+      "AbsoluteMoniker": "D:0:0:{87816147-8CAF-428C-983D-FC52068C421D}|Cafe.ManagementAPI\\Cafe.ManagementAPI.csproj|c:\\users\\namle\\onedrive\\m\u00E1y t\u00EDnh\\glasscoffe8383\\cafe.managementapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{87816147-8CAF-428C-983D-FC52068C421D}|Cafe.ManagementAPI\\Cafe.ManagementAPI.csproj|solutionrelative:cafe.managementapi\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+>>>>>>> NamDev
     }
   ],
   "DocumentGroupContainers": [
@@ -28,6 +33,7 @@
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "appsettings.json",
+
               "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\Cafe.BusinessObjects\\appsettings.json",
               "RelativeDocumentMoniker": "Cafe.BusinessObjects\\appsettings.json",
               "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\Cafe.BusinessObjects\\appsettings.json",
@@ -48,6 +54,14 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2025-06-18T07:39:50.505Z",
+
+              "DocumentMoniker": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\Cafe.ManagementAPI\\appsettings.json",
+              "RelativeDocumentMoniker": "Cafe.ManagementAPI\\appsettings.json",
+              "ToolTip": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\Cafe.ManagementAPI\\appsettings.json",
+              "RelativeToolTip": "Cafe.ManagementAPI\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+
               "EditorCaption": ""
             }
           ]

@@ -1,11 +1,16 @@
 {
   "Version": 1,
+
   "WorkspaceRootPath": "C:\\Users\\namle\\OneDrive\\M\u00E1y t\u00EDnh\\GlassCoffe8383\\",
+
+  "WorkspaceRootPath": "C:\\Users\\vunuo\\Desktop\\Project\\PRN232-Project\\",
+
   "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 168,
+<<<<<<< HEAD
       "DocumentGroups": [
         {
           "DockedWidth": 200,
@@ -18,6 +23,9 @@
           ]
         }
       ]
+
+      "DocumentGroups": []
+
     }
   ]
 }
